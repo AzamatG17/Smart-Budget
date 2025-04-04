@@ -1,6 +1,7 @@
 using MediatR;
 using Scalar.AspNetCore;
 using SmartBudget.Api.Extentions;
+using SmartBudget.Api.Middlewares;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,7 +19,11 @@ if (app.Environment.IsDevelopment())
 {
     app.MapScalarApiReference();
     app.MapOpenApi();
+
+    app.MapGet("/", () => Results.Redirect("/scalar/v1"));
 }
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 
