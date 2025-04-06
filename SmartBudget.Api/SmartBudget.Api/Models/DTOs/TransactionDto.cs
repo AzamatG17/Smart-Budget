@@ -1,6 +1,4 @@
-﻿using SmartBudget.Api.Models.Enums;
-
-namespace SmartBudget.Api.Models.DTOs;
+﻿namespace SmartBudget.Api.Models.DTOs;
 
 public record TransactionDto(
     int Id,
